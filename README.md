@@ -350,7 +350,9 @@ A system prompt guides the agent's behavior and helps it stay focused on the rig
 3. Ask a question that maps to one of your defined metrics or models — for example:
 
 > *"What was total revenue last month?"*
+
 > *"Which customers placed the most orders in Q1?"*
+
 > *"Show me order counts broken down by week."*
 
 > **✅ Expected:** The agent returns a response grounded in the context dbt provides — metric definitions, lineage, and model documentation — all surfaced through the MCP Server. dbt generates the SQL, and the result is returned through the agent without any Snowflake Semantic View required.
