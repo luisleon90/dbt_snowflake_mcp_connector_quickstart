@@ -1,11 +1,8 @@
-# dbt_snowflake_mcp_connector_quickstart
-A quickstart guide for setting up the dbt MCP Server with Snowflake Cortex via MCP Connectors
-
 # dbt Semantic Layer + Snowflake Cortex Agents via MCP
 
 ## What this guide covers
 
-This guide walks you through connecting Snowflake Cortex Agents to the dbt Semantic Layer using the dbt MCP Server and Snowflake's MCP Connector functionality. By the end, you will have a Cortex Agent that can answer natural language questions about your data — grounded in the full context dbt provides about your data: metrics, lineage, model definitions, documentation, and semantic relationships.
+This guide walks you through connecting Snowflake Cortex Agents to the dbt Semantic Layer using the dbt MCP Server and Snowflake's MCP Connector functionality. By the end, a Snowflake Cortex Agent will be able to answer natural language questions about your data — powered entirely by the context your dbt project provides. No Snowflake Semantic View required.
 
 The setup has five stages:
 
@@ -236,52 +233,6 @@ Review the SQL CoCo generates — it will include the External Access Integratio
 
 ---
 
-### SQL reference: DCR-based API Integration and MCP Server
-
-If you prefer to create these objects directly via SQL, use this pattern. Note the `OAUTH_ALLOWED_SCOPES` parameter — omitting it is a known cause of errors during integration creation.
-
-```sql
--- Create the API integration using DCR
--- IMPORTANT: OAUTH_ALLOWED_SCOPES is required — omitting it will cause errors
-CREATE API INTEGRATION dbt_mcp_api_integration
-  API_PROVIDER = external_mcp
-  API_ALLOWED_PREFIXES = ('https://YOUR_DBT_HOST_URL')
-  API_USER_AUTHENTICATION = (
-    TYPE = OAUTH_DYNAMIC_CLIENT
-    OAUTH_RESOURCE_URL = 'https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/'
-    OAUTH_ALLOWED_SCOPES = ('user_access', 'offline_access')
-  )
-  ENABLED = TRUE;
-
--- Create the external MCP server
-CREATE EXTERNAL MCP SERVER dbt_mcp_server
-  WITH DISPLAY_NAME = 'dbt Semantic Layer'
-  URL = 'https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/'
-  API_INTEGRATION = dbt_mcp_api_integration;
-```
-
-For custom OAuth (Option B from Step 3), the API Integration instead uses:
-
-```sql
--- Create the API integration with custom OAuth credentials
--- IMPORTANT: OAUTH_ALLOWED_SCOPES is required — omitting it will cause errors
-CREATE API INTEGRATION dbt_mcp_api_integration
-  API_PROVIDER = external_mcp
-  API_ALLOWED_PREFIXES = ('https://YOUR_DBT_HOST_URL')
-  API_USER_AUTHENTICATION = (
-    TYPE = OAUTH2
-    OAUTH_CLIENT_ID = 'your_client_id'
-    OAUTH_CLIENT_SECRET = 'your_client_secret'
-    OAUTH_TOKEN_ENDPOINT = 'https://your_token_endpoint'
-    OAUTH_AUTHORIZATION_ENDPOINT = 'https://your_auth_endpoint'
-    OAUTH_CLIENT_AUTH_METHOD = CLIENT_SECRET_BASIC
-    OAUTH_ALLOWED_SCOPES = ('user_access', 'offline_access')
-  )
-  ENABLED = TRUE;
-```
-
----
-
 ### 4.3 Authenticate into the MCP Connector
 
 Once the connector object is created, you need to authenticate into it using your dbt platform credentials. This authorizes Snowflake to make requests to the dbt MCP Server on your behalf.
@@ -396,3 +347,49 @@ OAuth-based authentication for the remote dbt MCP Server may require an Enterpri
 | dbt remote MCP Server setup | https://docs.getdbt.com/docs/dbt-ai/setup-remote-mcp |
 | dbt Semantic Layer + Snowflake quickstart | https://docs.getdbt.com/guides/sl-snowflake-qs |
 | Snowflake MCP Connectors docs | https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp-connectors |
+
+### SQL reference: DCR-based API Integration and MCP Server
+
+If you prefer to create these objects directly via SQL, use this pattern. Note the `OAUTH_ALLOWED_SCOPES` parameter — omitting it is a known cause of errors during integration creation.
+
+```sql
+-- Create the API integration using DCR
+-- IMPORTANT: OAUTH_ALLOWED_SCOPES is required — omitting it will cause errors
+CREATE API INTEGRATION dbt_mcp_api_integration
+  API_PROVIDER = external_mcp
+  API_ALLOWED_PREFIXES = ('https://YOUR_DBT_HOST_URL')
+  API_USER_AUTHENTICATION = (
+    TYPE = OAUTH_DYNAMIC_CLIENT
+    OAUTH_RESOURCE_URL = 'https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/'
+    OAUTH_ALLOWED_SCOPES = ('user_access', 'offline_access')
+  )
+  ENABLED = TRUE;
+
+-- Create the external MCP server
+CREATE EXTERNAL MCP SERVER dbt_mcp_server
+  WITH DISPLAY_NAME = 'dbt Semantic Layer'
+  URL = 'https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/'
+  API_INTEGRATION = dbt_mcp_api_integration;
+```
+
+For custom OAuth (Option B from Step 3), the API Integration instead uses:
+
+```sql
+-- Create the API integration with custom OAuth credentials
+-- IMPORTANT: OAUTH_ALLOWED_SCOPES is required — omitting it will cause errors
+CREATE API INTEGRATION dbt_mcp_api_integration
+  API_PROVIDER = external_mcp
+  API_ALLOWED_PREFIXES = ('https://YOUR_DBT_HOST_URL')
+  API_USER_AUTHENTICATION = (
+    TYPE = OAUTH2
+    OAUTH_CLIENT_ID = 'your_client_id'
+    OAUTH_CLIENT_SECRET = 'your_client_secret'
+    OAUTH_TOKEN_ENDPOINT = 'https://your_token_endpoint'
+    OAUTH_AUTHORIZATION_ENDPOINT = 'https://your_auth_endpoint'
+    OAUTH_CLIENT_AUTH_METHOD = CLIENT_SECRET_BASIC
+    OAUTH_ALLOWED_SCOPES = ('user_access', 'offline_access')
+  )
+  ENABLED = TRUE;
+```
+
+---
