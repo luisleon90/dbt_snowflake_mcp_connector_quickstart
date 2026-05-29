@@ -352,24 +352,25 @@ A system prompt guides the agent's behavior and helps it stay focused on the rig
 
 ---
 
-#### Troubleshooting
+## Troubleshooting
 
-**Connector shows "Not Connected" after authentication**
+#### Connector shows "Not Connected" after authentication
+
 Re-authenticate by navigating to **Settings → MCP Connectors** and clicking **Connect** again. OAuth tokens can expire after a period of inactivity.
 
-**API Integration creation fails**
+#### API Integration creation fails
 Ensure `OAUTH_ALLOWED_SCOPES = ('user_access', 'offline_access')` is included in the `API_USER_AUTHENTICATION` block. This is a known requirement — omitting it causes integration creation to fail regardless of other settings.
 
-**Agent returns no results or tool errors**
+#### Agent returns no results or tool errors
 Confirm your production environment has a recent successful job run that produced a `semantic_manifest.json`. The Semantic Layer cannot serve results without an up-to-date manifest.
 
-**API Integration creation fails with a hostname error**
+#### API Integration creation fails with a hostname error
 Snowflake requires hostnames to use hyphens (`-`) rather than underscores (`_`). If your dbt platform host URL contains underscores, contact your dbt account team to confirm the correct format for your account.
 
-**`execute_sql` tool returns an auth error**
+#### `execute_sql` tool returns an auth error
 The `execute_sql` tool requires a Personal Access Token (PAT). Service tokens do not work for this tool. Update your integration to use a PAT if you need SQL execution capability.
 
-**OAuth errors or DCR not available**
+#### OAuth errors or DCR not available
 OAuth-based authentication for the remote dbt MCP Server may require an Enterprise or Enterprise+ dbt platform plan. If you encounter OAuth-related errors, confirm your plan tier with your dbt account team.
 
 ---
