@@ -352,7 +352,7 @@ A system prompt guides the agent's behavior and helps it stay focused on the rig
 
 ---
 
-## Troubleshooting
+#### Troubleshooting
 
 **Connector shows "Not Connected" after authentication**
 Re-authenticate by navigating to **Settings → MCP Connectors** and clicking **Connect** again. OAuth tokens can expire after a period of inactivity.
