@@ -156,6 +156,7 @@ Before setting up the MCP Connector in Snowflake, confirm which authentication m
 | Method | Best for | What you need |
 |---|---|---|
 | **DCR (Dynamic Client Registration)** | Most users — recommended | Nothing. dbt platform handles OAuth registration automatically |
+| **Custom OAuth App** | Environments where DCR is unavailable | OAuth credentials from your identity provider (see below) |
 
 ### Option A: DCR (Dynamic Client Registration) — Recommended
 
