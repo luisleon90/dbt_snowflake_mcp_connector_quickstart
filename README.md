@@ -151,7 +151,11 @@ Keep this URL handy — you will use it when creating the Snowflake API Integrat
 
 ## Step 3: Configure OAuth in dbt
 
-The Snowflake MCP Connector authenticates to the dbt MCP Server using OAuth. dbt platform supports two approaches.
+Before setting up the MCP Connector in Snowflake, confirm which authentication method you will use. This determines what you need to have ready before Step 4.
+
+| Method | Best for | What you need |
+|---|---|---|
+| **DCR (Dynamic Client Registration)** | Most users — recommended | Nothing. dbt platform handles OAuth registration automatically |
 
 ### Option A: DCR (Dynamic Client Registration) — Recommended
 
