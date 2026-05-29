@@ -205,9 +205,9 @@ The MCP Connector in Snowflake consists of two objects: an **API Integration** a
 4. Under **Authentication**, select **DCR** as the authentication method (or enter your custom OAuth values if using Option B from Step 3)
 5. Click **Add**
 
-> **Note on scopes:** If you encounter errors during API Integration creation, ensure that `OAUTH_ALLOWED_SCOPES = ('user_access', 'offline_access')` is included. This is a known requirement and the integration will fail without it. The UI may not surface this field explicitly — if configuring via SQL, always include it (see the DDL reference below).
+> **Note on scopes:** If you encounter errors during authentication of the MCP, ensure that `OAUTH_ALLOWED_SCOPES = ('user_access', 'offline_access')` was included in external access integration. This is a known requirement and the integration will fail without it. The UI may not surface this field explicitly — if configuring via SQL, always include it (see the DDL reference below).
 
-> **Note on network access:** Snowflake requires an External Access Integration to allow network-level access to the dbt MCP Server URL. When configuring manually, your Snowflake account admin may need to ensure this exists before the connector can communicate with the dbt MCP Server. If you use Option B below (Cortex Code), this is handled automatically.
+> **Note on network access:** Snowflake requires an External Access Integration to allow network-level access to the dbt MCP Server URL. When configuring manually, your Snowflake account admin may need to ensure this exists before the connector can communicate with the dbt MCP Server. If you use Option B below (Cortex Code), this is handled by the agent.
 
 ---
 
