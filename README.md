@@ -332,12 +332,18 @@ A system prompt guides the agent's behavior and helps it stay focused on the rig
 
 ### Option B: Create via Cortex Code
 
-1. In Snowsight, open a **Cortex Code** session
-2. Describe the agent you want to create — for example:
+#### 5b.1 Open Cortex Code
+
+1. In Snowsight, open a new **Cortex Code** session
+
+#### 5b.2 Ask CoCo to create the agent
+
+1. In the CoCo prompt, describe the agent you want to create — for example:
 
 > *"Create a Cortex Agent called MY_DATA_AGENT that uses the `YOUR_DATABASE.YOUR_SCHEMA.DBT_MCP_SERVER` MCP server as a tool. Add a system prompt describing it as a data assistant grounded in the context provided by dbt."*
 
-3. Review and execute the SQL CoCo generates
+2. Review the SQL CoCo generates
+3. Confirm and execute
 
 > **✅ Expected:** The agent is created and appears in **AI & ML → Cortex Agents**.
 
