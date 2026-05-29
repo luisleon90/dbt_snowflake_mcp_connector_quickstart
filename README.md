@@ -1,4 +1,4 @@
-# dbt Semantic Layer + Snowflake Cortex Agents via MCP
+# dbt Semantic Layer + Snowflake Cortex agents via MCP
 
 ## What this guide covers
 
@@ -11,6 +11,7 @@ The setup has five stages:
 3. Configure OAuth in dbt
 4. Set up the MCP Connector in Snowflake
 5. Create and configure a Cortex Agent
+6. Test the new Cortex Agent
 
 ---
 
@@ -94,7 +95,7 @@ For full YAML syntax and metric types, refer to the [dbt Semantic Layer document
 
 **Option B: Use dbt Wizard**
 
-In dbt platform Studio, open the **dbt Wizard** panel and ask it to generate semantic models and metrics for one of your mart models. For example:
+In dbt Studio, open the **dbt Wizard** panel and ask it to generate semantic models and metrics for one of your mart models. For example:
 
 > *"Generate a semantic model and metrics for the fct_orders model, including a revenue metric and an order count metric."*
 
