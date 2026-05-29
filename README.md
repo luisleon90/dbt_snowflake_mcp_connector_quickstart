@@ -51,6 +51,8 @@ Before starting, you will need:
 
 > **⚠️ Plan requirement:** OAuth-based authentication for the remote dbt MCP Server may be gated to Enterprise or Enterprise+ plans. If you are on a lower tier, confirm with your dbt account team before proceeding. Service token and PAT authentication are available on lower-tier plans.
 
+>> **⚠️ Plan requirement — dbt Semantic Layer:** The Semantic Layer is available on **Team plans and above**. It is not available on Developer plans. If you do not see the Semantic Layer configuration option in **Account Settings → Projects**, confirm your plan tier with your dbt account team before proceeding. 
+
 ---
 
 ## Step 1: Configure the dbt Semantic Layer
@@ -124,7 +126,7 @@ The dbt MCP Server uses a service token or personal access token (PAT) to authen
 1. Navigate to **Account Settings → API Tokens → Service Tokens**
 2. Click **+ New Token**
 3. Name the token (for example, `snowflake-mcp-token`)
-4. Set the permissions to **Semantic Layer Only** and **Metadata Only**
+4. Select both permission sets **Semantic Layer Only** and **Metadata Only**
 5. Click **Save** and copy the token — you will not be able to view it again
 
 > **Note:** If you plan to use the `execute_sql` tool through the MCP Server, you must use a Personal Access Token (PAT) instead. Service tokens do not support `execute_sql`. For metric querying and metadata exploration, a service token is sufficient.
