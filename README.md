@@ -216,9 +216,9 @@ The MCP Connector in Snowflake consists of two objects: an **API Integration** a
 
 ---
 
-### Option B: Setup via Cortex Code (CoCo) — Recommended
+### Option B: Setup via CoCo — Recommended
 
-Cortex Code is Snowflake's AI coding assistant, available in Snowsight. When you describe what you want to create, CoCo generates and executes the required SQL — including the External Access Integration and the `OAUTH_ALLOWED_SCOPES` parameter — automatically.
+CoCo is Snowflake's AI coding assistant, available in Snowsight. When you describe what you want to create, CoCo generates and executes the required SQL — including the External Access Integration and the `OAUTH_ALLOWED_SCOPES` parameter — automatically.
 
 #### 4b.1 Open Cortex Code
 
@@ -284,7 +284,7 @@ A system prompt guides the agent's behavior and helps it stay focused on the rig
 
 ---
 
-### Option B: Create via Cortex Code
+### Option B: Create via CoCo
 
 #### 5b.1 Open Cortex Code
 
