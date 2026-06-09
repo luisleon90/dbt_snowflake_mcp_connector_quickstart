@@ -212,7 +212,7 @@ The MCP Connector in Snowflake consists of two objects: an **API Integration** a
 
 > **Note on scopes:** If you encounter errors during authentication of the MCP, ensure that `OAUTH_ALLOWED_SCOPES = ('user_access', 'offline_access')` was included in external access integration. This is a known requirement and the integration will fail without it. The UI may not surface this field explicitly — if configuring via SQL, always include it (see the DDL reference below).
 
-> **Note on network access:** Snowflake requires an External Access Integration to allow network-level access to the dbt MCP Server URL. When configuring manually, your Snowflake account admin may need to ensure this exists before the connector can communicate with the dbt MCP Server. If you use Option B below (Cortex Code), this is handled by the agent.
+> **Note on network access:** Snowflake requires an External Access Integration to allow network-level access to the dbt MCP Server URL. When configuring manually, your Snowflake account admin may need to ensure this exists before the connector can communicate with the dbt MCP Server. If you use Option B below (CoCo), this is handled by the agent.
 
 ---
 
@@ -220,9 +220,9 @@ The MCP Connector in Snowflake consists of two objects: an **API Integration** a
 
 CoCo is Snowflake's AI coding assistant, available in Snowsight. When you describe what you want to create, CoCo generates and executes the required SQL — including the External Access Integration and the `OAUTH_ALLOWED_SCOPES` parameter — automatically.
 
-#### 4b.1 Open Cortex Code
+#### 4b.1 Open CoCo
 
-1. In Snowsight, open a new **Cortex Code** session
+1. In Snowsight, open a new **CoCo** session
 
 #### 4b.2 Ask CoCo to create the connector
 
@@ -286,9 +286,9 @@ A system prompt guides the agent's behavior and helps it stay focused on the rig
 
 ### Option B: Create via CoCo
 
-#### 5b.1 Open Cortex Code
+#### 5b.1 Open CoCo
 
-1. In Snowsight, open a new **Cortex Code** session
+1. In Snowsight, open a new **CoCo** session
 
 #### 5b.2 Ask CoCo to create the agent
 
