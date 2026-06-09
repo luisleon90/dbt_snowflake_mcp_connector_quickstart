@@ -51,7 +51,7 @@ Before starting, you will need:
 
 > **⚠️ Plan requirement:** OAuth-based authentication for the remote dbt MCP Server may be gated to Enterprise or Enterprise+ plans. If you are on a lower tier, confirm with your dbt account team before proceeding. Service token and PAT authentication are available on lower-tier plans.
 
->> **⚠️ Plan requirement — dbt Semantic Layer:** The Semantic Layer is available on **Team plans and above**. It is not available on Developer plans. If you do not see the Semantic Layer configuration option in **Account Settings → Projects**, confirm your plan tier with your dbt account team before proceeding. 
+> **⚠️ Plan requirement — dbt Semantic Layer:** The Semantic Layer is available on **Team plans and above**. It is not available on Developer plans. If you do not see the Semantic Layer configuration option in **Account Settings → Projects**, confirm your plan tier with your dbt account team before proceeding. 
 
 ---
 
